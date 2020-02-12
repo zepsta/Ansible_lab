@@ -1,0 +1,14 @@
+---
+- name: Create SVM
+  netapp.ontap.na_ontap_svm:
+    state: present
+    name: "{{ vserver_name }}"
+    root_volume: "vol0_{{ vserver_name }}"
+    root_volume_aggregate: "{{ aggr_name }}"
+    root_volume_security_style: unix
+    allowed_protocols: nfs
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: true
+    validate_certs: false

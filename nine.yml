@@ -1,0 +1,18 @@
+- name: usinf handlers
+  hosts: all
+  become: yes
+  tasks:
+    - name: power off
+      debug:
+        msg: "Rebooting system"
+      notify:
+        - handl
+    
+
+  handlers:
+    - name: handl
+      shell:
+        name: httpd
+        state: started
+        enabled: yes
+

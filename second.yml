@@ -1,0 +1,10 @@
+- name: Second Playbook
+  hosts: all
+  tasks:
+    - name: task1
+      copy:
+        content: "this file has been edited using ansible again"
+        dest: /tmp/abc
+        follow: no
+        force: no
+      

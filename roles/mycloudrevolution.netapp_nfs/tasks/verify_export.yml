@@ -1,0 +1,16 @@
+---
+- name: Create mount directory 
+  file: 
+    path: "{{ mount_directory }}"
+    state: directory 
+- name: Mount NFS export 
+  mount: 
+    state: mounted 
+    path: "{{ mount_directory }}"
+    src: "{{ if_address }}:/{{ vol_name }}" 
+    opts: "sec=sys"
+    fstype: nfs
+- name: Unmount NFS export 
+  mount: 
+    state: absent 
+    path: "{{ mount_directory }}"

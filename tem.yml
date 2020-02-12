@@ -1,0 +1,17 @@
+- name: using block
+  hosts: all
+  become: yes
+  tasks:
+    - block:
+        - name: task1
+          yum:
+            name: httpd
+            state: present
+      rescue:
+        - name: task2
+          debug:
+            msg: task rescued
+      always:
+        - name: task3
+          debug:
+            msg: this will always run

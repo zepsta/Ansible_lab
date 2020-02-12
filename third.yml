@@ -1,0 +1,6 @@
+- name: third
+  hosts: all
+  tasks:
+    - group: name=admin state=present
+    - user: name=zepsta group=admin
+

@@ -1,0 +1,22 @@
+- name: usinf handlers
+  hosts: all
+  become: yes
+  tasks:
+    - name: install package
+      yum:
+        name: httpd
+        state: latest
+      notify:
+        - handl
+    
+    - name: print hi
+      debug:
+        msg: "hello sanofi"
+
+  handlers:
+    - name: handl
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+

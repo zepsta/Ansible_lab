@@ -1,0 +1,31 @@
+---
+- name: Modify default Export Policy Rule
+  netapp.ontap.na_ontap_export_policy_rule: 
+    state: present 
+    policy_name: default
+    vserver: "{{ vserver_name }}" 
+    client_match: 0.0.0.0/0  
+    ro_rule: any 
+    rw_rule: none 
+    super_user_security: none 
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: yes
+    validate_certs: false
+- name: Create New Export Policy Rule
+  netapp.ontap.na_ontap_export_policy_rule:
+    state: present
+    name:  "{{ export_policy_name }}"
+    vserver: "{{ vserver_name }}"
+    client_match: "{{ export_policy_rule_client }}"
+    rw_rule: any
+    ro_rule: any
+    protocol: nfs,nfs3,nfs4
+    super_user_security: any
+    allow_suid: true
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: yes
+    validate_certs: false

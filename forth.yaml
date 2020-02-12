@@ -1,0 +1,6 @@
+- name: Forth
+  hosts: all
+  tasks:
+     - debug:
+        msg: hello sanofi {{ test }}
+

@@ -1,0 +1,12 @@
+- name: using vault
+  hosts: all
+  become: yes
+  vars_files:
+    - file-vault
+  tasks:
+    - name: print
+      debug:
+        msg: "{{ var1 }}"
+
+     
+    

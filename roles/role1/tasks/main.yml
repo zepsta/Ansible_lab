@@ -1,0 +1,14 @@
+- name: install software
+  yum:
+    name: vsftpd
+    state: present
+
+- name: print this 
+  debug:
+    msg: hi there ansible {{ ansible_fqdn }}
+
+- name: copy a file
+  copy:
+    content: Hello all users of {{ ansible_hostname }}
+    dest: /tmp/motd
+

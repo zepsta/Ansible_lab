@@ -1,0 +1,14 @@
+---
+- name: Create Aggregate
+  netapp.ontap.na_ontap_aggregate:
+    state: present
+    service_state: online
+    name: "{{ aggr_name }}"
+    disk_count: 5
+    wait_for_online: True
+    time_out: 300
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: true
+    validate_certs: false

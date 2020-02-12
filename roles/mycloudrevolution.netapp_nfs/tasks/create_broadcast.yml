@@ -1,0 +1,25 @@
+---
+- name: Modify Default Broadcast Domain
+  netapp.ontap.na_ontap_broadcast_domain:
+    state: present
+    name: Default
+    mtu: 1500
+    ipspace: Default
+    ports: "{{ broadcast_ports_default }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    hostname: "{{ netapp_hostname }}"
+    https: true
+    validate_certs: false
+- name: Create Broadcast Domain
+  netapp.ontap.na_ontap_broadcast_domain:
+    state: present
+    name: "{{ broadcast_name }}"
+    mtu: 1500
+    ipspace: Default
+    ports: "{{ broadcast_ports }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    hostname: "{{ netapp_hostname }}"
+    https: true
+    validate_certs: false

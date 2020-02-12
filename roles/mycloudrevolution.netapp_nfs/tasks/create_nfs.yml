@@ -1,0 +1,26 @@
+---
+- name: Change NFS Status
+  netapp.ontap.na_ontap_nfs:
+    state: present
+    service_state: started
+    vserver: "{{ vserver_name }}"
+    nfsv3: enabled
+    nfsv4: enabled
+    nfsv40_acl: enabled
+    nfsv40_read_delegation: enabled
+    nfsv40_referrals: enabled
+    nfsv40_write_delegation: enabled
+    nfsv41: enabled
+    nfsv41_acl: enabled
+    nfsv41_read_delegation: enabled
+    #nfsv41_referrals: enabled
+    nfsv41_write_delegation: enabled
+    tcp: enabled
+    udp: enabled
+    vstorage_state: enabled
+    showmount: enabled
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: true
+    validate_certs: false

@@ -1,0 +1,21 @@
+---
+- name: Create Volume
+  netapp.ontap.na_ontap_volume:
+    state: present
+    name: "{{ vol_name }}"
+    junction_path: "/{{ vol_name }}" 
+    is_infinite: false
+    aggregate_name: "{{ aggr_name }}"
+    size: "{{ vol_size }}"
+    size_unit: "{{ vol_size_unit }}"
+    space_guarantee: none
+    policy: "{{ export_policy_name }}"
+    volume_security_style: unix
+    percent_snapshot_space: 60
+    vserver: "{{ vserver_name }}"
+    wait_for_completion: true
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: true
+    validate_certs: false

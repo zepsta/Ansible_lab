@@ -1,0 +1,16 @@
+- name: using conditions
+  hosts: all
+  become: yes
+  gather_facts: yes
+  vars:
+    var1: abc
+  tasks:
+    - name: print debug
+      debug:
+        msg: printing this if should happen always
+      when: var1 is defined
+
+    - name: print debug2
+      debug:
+        msg: this should not be print
+      when: var1 == "abc"

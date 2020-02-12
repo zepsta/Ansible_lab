@@ -1,0 +1,12 @@
+- name: install software
+  hosts: all
+  become: yes
+  tasks:
+    - name: install the sftware
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - httpd
+        - vsftpd
+        - mariadb

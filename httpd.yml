@@ -1,0 +1,31 @@
+- name: Sanofi Webservrer
+  hosts: node1.sanofi.com
+  tasks:
+    - name: install httpd package
+      yum: 
+        name: httpd
+        state: latest
+     
+    - name: Copy index file
+      copy: 
+        src: /home/mumbai/project1/index.html
+        dest: /var/www/html/index.html
+  
+    - name: Open port 80
+      firewalld:
+        service: http
+        state: enabled
+        permanent: true
+        immediate: yes
+
+    - name: restart firewall service
+      service:
+        name: firewalld
+        state: restarted
+
+    - name: start http service
+      service:
+        name: httpd
+        state: started
+                        
+     

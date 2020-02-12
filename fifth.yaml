@@ -1,0 +1,8 @@
+- name: remove software
+  hosts: all
+  become: yes
+  tasks:
+    - yum: 
+        name: httpd 
+        state: absent 
+

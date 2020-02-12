@@ -1,0 +1,18 @@
+---
+# tasks file for netapp_cifs
+- include_tasks: create_aggr.yml
+  when: create_aggr| bool
+- include_tasks: create_svm.yml
+  when: create_svm| bool
+- include_tasks: create_broadcast.yml
+  when: create_broadcast | bool
+- include_tasks: create_interface.yml
+  when: create_interface | bool
+- include_tasks: create_nfs.yml
+  when: create_nfs | bool
+- include_tasks: create_export.yml
+  when: create_export | bool
+- include_tasks: create_vol.yml
+  when: create_vol | bool
+- include_tasks: verify_export.yml
+  when: verify_export | bool
